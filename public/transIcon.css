@@ -1,0 +1,17 @@
+.icon-container {
+    /* position: absolute; */
+    top: var(--icon-top);
+    left: var(--icon-left);
+    /* width: var(--b2ad46e2);
+    height: var(--14b33b7e); */
+    background-color: #80fc04;
+    /* border-radius: 50%;
+    box-shadow: 0 0 10px #b3b5b8;
+    transition: width 0.3s linear;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    
+}
+
+

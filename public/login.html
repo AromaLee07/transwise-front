@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://apis.google.com;"> -->
+  <title>Login - TransWise</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+
+<body>
+  <div class="login-container" id="login-container">
+    <div class="login-box">
+      <div class="logo">
+        <img src="icons/icons8-translate-48.png" alt="PromptWise Logo" />
+        <span style="font-size: 22px;">TransWise</span>
+      </div>
+
+      <div id="login-options">
+        <!-- <p class="register-text" id="register-text">
+            No account? <a href="#" id="toggle-to-register">Sign up for free</a>
+          </p> -->
+        <button class="google-login" id="login-google">
+          <div id="button-content">
+            <img src="icons/google-icon2.svg" alt="Google Icon" class="google-icon" />
+            <span id="button-text">Login with Google</span>
+            <span id="spinner" class="spinner" style="display: none"></span>
+          </div>
+        </button>
+
+        <!-- <div class="separator">
+          <hr class="hr-style" />
+          <span>or</span>
+          <hr class="hr-style" />
+        </div> -->
+        <!-- <button class="email-login" id="login-password">
+          <div id="button-content">
+            <img src="icons/envelope-regular.svg" alt="Email Icon" />
+            <span id="email-button-text">Log in with email</span>
+          </div>
+        </button> -->
+      </div>
+
+      <div id="email-login-form" class="hidden">
+        <p class="register-text-password" id="register-text-password">
+          No account?<a href="#" id="toggle-to-register-email">Sign up for free</a>
+        </p>
+        <div class="email-login-container">
+          <form id="email-login">
+            <div class="user-login">
+              <!-- <label>email</label> -->
+              <input type="text" placeholder="Email address" name="email" required />
+            </div>
+            <div id="email-error-message"></div>
+
+            <div class="password-login">
+              <!-- <label>password</label> -->
+              <input type="password" placeholder="Password" name="password" required />
+            </div>
+            <button type="submit" id="email-submit-button">
+              Log in
+              <span id="spinner-login" class="spinner-login" style="display: none"></span>
+            </button>
+          </form>
+          <!-- <div class="forgot-password">
+              忘记密码？<a href="#">点击这里</a>
+            </div> -->
+
+          <div class="separator">
+            <hr class="hr-style" />
+            <span>or</span>
+            <hr class="hr-style" />
+          </div>
+          <button class="google-login" id="login-google1">
+            <div id="button-content1">
+              <img src="icons/google-icon2.svg" alt="Google Icon" class="google-icon" />
+              <span id="button-text1">Sign in with Google</span>
+              <span id="spinner-google1" class="spinner-google1" style="display: none"></span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <p class="terms">
+        Registering signifies your agreement to <br>
+        <a href="termsService.html" id="terms-link" target="_blank" rel="noopener noreferrer">terms and conditions</a>
+        and
+        <a href="privacyPolicy.html" id="privacy-link" target="_blank" rel="noopener noreferrer">privacy policy</a>
+      </p>
+    </div>
+  </div>
+  <script src="login.js"></script>
+  <!-- <script src="https://apis.google.com/js/api.js"></script> -->
+</body>
+
+</html>

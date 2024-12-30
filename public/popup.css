@@ -1,0 +1,1575 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* 确保 html 和 body 的高度为 100% */
+  margin: 0;
+  /* 去掉默认的 margin */
+  padding: 0;
+  /* 去掉默认的 padding */
+  background-color: #fff4e8;
+  /* background: linear-gradient(135deg, #fff4e8, #ffe9d1, #ffdab9, #ffbd93, #e8b07a, #c6945f); */
+  /* background: linear-gradient(135deg, #fff4e8, #fff8ee, #ffefe1, #ffe7d6, #ffdecc, #ffd6c4); */
+  /* background: linear-gradient(135deg, #fff4e8, #f5fdf4, #eafaf8, #e3f4ff, #d4ecff, #ccf2ff); */
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: 'Courier New', Courier, 'Lucida Console', 'Consolas', monospace; */
+
+  font-family: 'Source Han Mono', 'Courier New', Courier, monospace;
+  line-height: 1.5rem;
+  color: #3d3329;
+  font-weight: 350;
+  /* border: 1px solid #999; */
+  border: 0.5px solid rgba(153, 153, 153, 0.3);  
+  box-sizing: border-box; /* 添加这行确保边框计入总宽高 */
+  overflow: auto;
+  position: relative;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+}
+
+#user-interface {
+  /* width: 95%; */
+  /* background-color: #0056b3; */
+  margin: 5px;
+  box-sizing: border-box;
+  /* 包含 padding 和 border 在内 */
+  width: calc(100% - 10px);
+  /* 减去左右的 margin */
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  /* background-color: #b8f405; */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  /* background-color: aqua; */
+}
+
+.logo-info {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  /* 确保图片不会超出容器 */
+  background-size: contain;
+  /* 覆盖整个容器 */
+  background-position: center;
+  /* 图片居中显示 */
+  background-repeat: no-repeat;
+  /* 不重复背景图片 */
+}
+
+/* 为 img 标签添加样式 */
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  
+  display: block;
+}
+
+.user-info {
+  width: 32px;
+  /* 设置宽度与.top-menu的高度一致，以创建圆形 */
+  height: 32px;
+  /* 设置高度与.top-menu的高度一致，以创建圆形 */
+  background-color: transparent;
+  /* 设置背景为透明 */
+  cursor: pointer;
+  overflow: hidden;
+  /* Ensure that the content inside respects the border radius */
+  /* border: 1px solid #666; */
+  border-radius: 50%;
+
+  /* 确保图片不会超出容器 */
+  background-size: contain;
+  /* 覆盖整个容器 */
+  background-position: center;
+}
+
+#user-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 确保图片填满圆形且不变形 */
+  /* Ensure the image itself is also round */
+  border-radius: 50%;
+}
+
+/* popup.css */
+/* #logout-popup {
+  position: absolute;
+  right: 0; 
+  top: 50px; 
+  background-color: #a7f708;
+  border: 1px solid #ccc;
+  padding: 10px;
+} */
+
+/* .hidden {
+  display: none;
+} */
+
+.logout {
+  position: relative;
+}
+
+#google-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.logout-popup {
+  display: none;
+  justify-content: center;
+  /* 水平方向居中 */
+  align-items: center;
+  /* 垂直方向居中 */
+  position: absolute;
+  width: 100px;
+  height: 40px;
+  top: 45px;
+  right: 0;
+  background-color: #353535;
+  border: none;
+  padding: 5px;
+  /* color: red; */
+  border-radius: 12px;
+  z-index: 1000;
+  /* align-self: center; */
+  /* padding: 15px 15px; */
+  text-align: center;
+  /* 水平方向居中 */
+  line-height: 40px;
+  /* 垂直方向居中，必须等于高度 */
+}
+
+.logout-button {
+  background: transparent;
+  border: none;
+  color: #fff4e8;
+  width: 95%;
+  height: 32px;
+
+}
+
+.logout-button:hover {
+  background: #555;
+  /* border: none; */
+  /* color: #fff4e8 */
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+/* .hidden {
+  display: none;
+} */
+
+/* #logout-button {
+  
+} */
+
+.translation-section {
+  display: flex;
+  flex-direction: column;
+  width: 370px;
+  /* 设置固定宽度 */
+  margin: 10px auto;
+  /* 上下 20px，左右自动居中 */
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  /* 包含 padding 和 border 在内 */
+  /* background-color: #ccc; */
+}
+
+.selections {
+  position: relative;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*gap: 15px;  控制各个元素之间的间距 */
+  /* padding: 10px; */
+  max-width: 100%;
+  width: 370px;
+  padding-bottom: 10px;
+  /* margin: 0 auto; */
+}
+
+#swap-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+.swap-icon {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  align-self: center;
+  margin: 0 10px;
+  color: #dbdbdb;
+  /* margin: 0 20px; 设置左右边距 */
+}
+
+.source-textarea {
+  /* background-color: rgba(17, 0, 255, 0.885); */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+  /* background-color: #f0f0f0; */
+}
+
+textarea {
+  width: calc(100% - 20px);
+  /* 减去左右的 margin */
+  height: 200px;
+  /* margin: 10px 0; */
+  background-color: transparent;
+  /* 文本框背景颜色 */
+  color: #222;
+  border: 1px solid #999;
+  border-radius: 16px 16px 0 0;
+  /* 圆角 */
+  outline: 0;
+  resize: none;
+  /* Disables the resize handle */
+  padding: 10px;
+  border-bottom: none;
+
+}
+
+.tools-in-textarea {
+  /* background-color: #ccc; */
+  background-color: transparent;
+  /* background-color: black; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 100%; */
+  border-radius: 0 0 16px 16px;
+  /* 圆角 */
+  padding: 10px;
+  border: 1px solid #585a73;
+  border-top: none;
+  width: calc(100% - 20px);
+}
+
+#button-container {
+  /* background-color: #0056b3; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#translation-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#translate-button {
+  width: 80px;
+  height: 32px;
+  background-color: #353535;
+  cursor: pointer;
+  /* 鼠标悬停时显示为指针 */
+  border-radius: 12px;
+  color: #fff4e8;
+  font-size: 14px;
+  border: 1px solid #999;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: first baseline;
+
+  overflow: hidden;
+  transition: width 0.3s ease;
+  /* 平滑过渡 */
+  text-align: center;
+  /* line-height: 40px;  */
+
+}
+
+#translate-button:disabled {
+  background-color: #555;
+  /* 禁用状态的字体颜色 */
+  cursor: not-allowed;
+  /* 鼠标悬停时显示为禁止状态 */
+  border-radius: 12px;
+  border: 1px solid #999;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+/* 文案样式 */
+#translate-button .button-text {
+  position: relative;
+  z-index: 1;
+  /* 确保文本位于图标之上 */
+  white-space: nowrap;
+  /* 防止文本换行 */
+}
+
+.loading-icon {
+  width: 25px;
+  height: 30px;
+  display: init-block;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  /* 设置与按钮之间的间距 */
+  background-color: #555;
+  border-radius: 12px 0 0 12px;
+  margin-right: -10px;
+  padding: 0 0 0 15px;
+  z-index: 2;
+  border: 1px solid #999;
+  border-right: none;
+
+}
+
+/* 加载图标 */
+.loading-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+/* 加载图标位置，放置在按钮左侧 */
+
+
+/* 加载时的按钮宽度和加载图标显示 */
+/* #translate-button.loading {
+  width: 100px; 
+} */
+
+/* 加载状态时，显示加载图标 */
+
+
+
+
+/* #translate-button.loading {
+  width: 100px; 
+} */
+
+
+
+
+
+
+
+
+
+/* #translate-button.loading::before {
+  content: "";
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-top-color: #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+} */
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+/* .loading-icon {
+  position: absolute;
+  left: 12px; 
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+} */
+
+
+
+
+
+
+/* button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; 
+}
+
+button:hover {
+  background-color: #0056b3;
+} */
+
+.model-selection1 {
+  width: 370px;
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: space-between;
+  margin: 5px auto;
+  /* 上下 20px，左右自动居中 */
+  box-sizing: border-box;
+  /* 包含 padding 和 border 在内 */
+  position: relative;
+  /* 设置相对定位作为面板的定位上下文 */
+}
+
+.delete-model {
+  /* background-color: #4caf50; */
+  display: flex;
+  align-items: center;
+}
+
+#selected-models {
+  /* background-color: #0541f6; */
+  display: flex;
+  /* 设置flex布局 */
+  justify-content: flex-start;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
+  height: 100%;
+  /* 或者您可以指定一个具体的高度 */
+}
+
+.result-section {
+  margin-top: 5px;
+}
+
+.model-selection {
+  /* display: flex;
+  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  /* 垂直排列结果框 */
+  /* gap: 10px;  */
+}
+
+.model-item {
+  background-color: transparent;
+  margin: 0 5px;
+  border-radius: 10px;
+  /* 圆角 */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  /* color: #000; */
+  border: 1px solid #353535;
+  /* padding: 6px 12px; */
+}
+
+/* 当 details 展开时，更改 model-item 样式 */
+details[open] .model-item {
+  border-radius: 10px 10px 0 0;
+  /* 展开时更改上部圆角，底部变为直角 */
+  /* background-color: #e0e0e0;  */
+  border-bottom: none;
+}
+
+.item-lable {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 如果您想要在第一个模型项的顶部也有间距，可以添加这个样式 */
+
+.model-item:hover {
+  background-color: #353535;
+  /* 悬停效果 */
+  color: #fff4e8;
+}
+
+.result-container {
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 0;
+  /* 圆角 */
+  /* margin-top: 10px; */
+  /* height: 90px; */
+  color: #222;
+  margin: 0 -7px 0 5px;
+  /* z-index: 9999; */
+  /* overflow-y: auto; */
+  height: auto;
+  /* 允许高度自动调整 */
+  min-height: 90px;
+  /* 设置默认最小高度为90px */
+  max-height: none;
+  /* 没有最大高度限制 */
+  overflow-y: visible;
+  /* 允许内容超出时扩展 */
+  position: relative;
+  border: 1px solid #353535;
+  border-bottom: none;
+  border-top: none;
+  z-index: 1000;
+}
+
+.tools-result-container {
+  background-color: transparent;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+  /* 圆角 */
+  /* margin-top: 10px; */
+  height: 20px;
+  color: #353535;
+  margin: 0 -7px 0 5px;
+  z-index: 1000;
+  position: relative;
+  border: 1px solid #353535;
+  border-top: none;
+
+}
+
+
+.arrow {
+  margin-left: auto;
+  max-width: 15px;
+  /* 设置最大宽度 */
+  max-height: 15px;
+  /* 设置最大高度 */
+  width: auto;
+  /* 自动宽度 */
+  height: auto;
+  /* 自动高度 */
+  margin-right: 10px;
+  /* 图标与关闭按钮之间的间距 */
+  border-radius: 50%;
+  color: #353535
+}
+
+.model-group {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  width: 370px;
+  /* height: 40px; */
+}
+
+.add-model {
+  display: flex;
+  /* 设置flex布局 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
+  background-color: transparent;
+  border: 1px solid #999;
+  border-radius: 24px;
+  height: 30px;
+  cursor: pointer;
+  /* color: #666 */
+}
+
+.add-model:hover {
+  /* display: flex; 
+  justify-content: center; 
+  align-items: center;  */
+  /* background-color: #353535; */
+  /* color: #fff4e8 */
+  /* border: none; */
+  /* border-radius: 24px;
+  height: 30px; */
+  /* cursor: pointer; */
+  color: #353535;
+  cursor: pointer;
+
+}
+
+#addModel {
+  background-color: transparent;
+  box-sizing: border-box;
+  /* 确保宽度包含padding和border */
+  padding: 10px;
+  /* 根据需要调整内边距 */
+  display: flex;
+  /* 设置flex布局 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
+  height: 100%;
+  /* 或者您可以指定一个具体的高度 */
+  border-radius: 24px;
+  border: none;
+  /* color: #dbdbdb; */
+  /* margin: 0 0 5px 0; */
+  cursor: pointer;
+  color: #666
+}
+
+#addModel:hover {
+  color: #353535;
+  cursor: pointer;
+}
+
+
+
+.plusIcon {
+  width: 14px;
+  height: 14px;
+}
+
+/* .plusText {
+  margin-left: 4px;
+  font-size: 13px;
+  cursor: pointer;
+
+} */
+
+#model-dropdown {
+  position: absolute;
+  top: 100%;
+  /* 将面板放置在按钮的正下方 */
+  left: 0;
+  /* 左对齐 */
+  width: 50%;
+  /* 面板宽度与按钮相同 */
+  /* background-color: #353535;  */
+  background-color: #333;
+  z-index: 9998;
+  /* 确保面板在按钮之上 */
+  transform: translateY(0);
+  /* 初始状态向上移动，使其不可见 */
+  padding: 6px;
+  border-radius: 10px;
+
+}
+
+#model-dropdown .model-dropdown-item {
+  /* background-color: #fff; */
+  /* color: #f3f3f3;  */
+  /* color: #fff4e8; */
+  color: #fff4e8;
+  /* background-color: #353535; */
+  background-color: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  font-size: 14px;
+  left: 0;
+  z-index: 9999;
+}
+
+
+#model-dropdown .model-dropdown-item:hover {
+  /* background-color: #56565f33; */
+  background-color: #555;
+  /* color: #555; */
+  border-radius: 8px;
+  /* cursor: pointer; */
+  z-index: 9999;
+}
+
+/* 让复选框整个区域可点击 */
+.model-dropdown-item label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.model-checkbox {
+  /* color:#56565f33 */
+  accent-color: #ffb700;
+}
+
+/* 当复选框被选中时的样式 */
+.model-checkbox:checked {
+  background-color: #007bff;
+  /* 选中后的背景色 */
+  border-color: #007bff;
+  /* 选中后的边框颜色 */
+  position: relative;
+}
+
+.selected-model {
+  display: flex;
+  /*align-items: center;  垂直居中对齐内容 */
+  /* background-color: #2c2c2c;  */
+  /* color: white;  */
+  padding: 5px;
+  /* 内边距 */
+  margin: 0 5px 5px 5px;
+  /* 外边距 */
+  border-radius: 50%;
+  /* 设置为圆形 */
+  position: relative;
+  /* 使关闭按钮绝对定位 */
+  height: 25px;
+  /* 设置高度以确保是圆形 */
+  width: 25px;
+  /* 设置宽度以确保是圆形 */
+  box-sizing: border-box;
+  /* 包含内边距和边框在内 */
+  border: 1px solid #666
+}
+
+.model-icon {
+  max-width: 15px;
+  /* 设置最大宽度 */
+  max-height: 15px;
+  /* 设置最大高度 */
+  width: auto;
+  /* 自动宽度 */
+  height: auto;
+  /* 自动高度 */
+  margin-right: 5px;
+  /* 图标与关闭按钮之间的间距 */
+  border-radius: 50%;
+  /* margin-left: 10px; */
+}
+
+.model-icon-r {
+  order: -1;
+  /* 将图标的顺序设置为 -1 */
+  max-width: 15px;
+  /* 设置最大宽度 */
+  max-height: 15px;
+  /* 设置最大高度 */
+  width: auto;
+  /* 自动宽度 */
+  height: auto;
+  /* 自动高度 */
+  margin-right: 8px;
+  /* 图标与关闭按钮之间的间距 */
+  border-radius: 50%;
+  margin-left: 10px;
+  left: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: none;
+  /* 默认隐藏 */
+  cursor: pointer;
+  /* 鼠标指针样式 */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.model-closed {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: none;
+  /* 默认隐藏 */
+  cursor: pointer;
+  /* 鼠标指针样式 */
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.model-closed1 {
+  /* background-color: white; */
+  color: white;
+}
+
+.selected-model:hover .close-button {
+  display: block;
+  /* 鼠标悬浮时显示关闭按钮 */
+  /* background-color: white; */
+  /* color: white; */
+}
+
+.selected-model:hover .model-closed {
+  display: block;
+  /* 鼠标悬浮时显示关闭按钮 */
+  /* background-color: white; */
+  /* color: white; */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(50, 50, 50, 0.85),
+    rgba(70, 70, 70, 0.88)
+  );
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* 确保在最上层 */
+}
+
+.login-box {
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 20;
+  /* 确保在覆盖层上方 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  width: 80%;
+  max-width: 400px;
+  color: #fff4e8;
+}
+
+.login-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff4e8
+}
+
+
+#google-login-button {
+  margin-top: 10px;
+  height: 38px;
+  border-radius: 18px;
+  border: none;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff4e8;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.other-translation {
+  display: none;
+  /* 使用 flexbox 布局 */
+  align-items: center;
+  /* 垂直居中对齐 */
+  gap: 10px;
+  /* 子元素之间的间距 */
+  /* background-color: white; */
+  margin-bottom: 10px;
+  height: 28px;
+  padding: 5px 0;
+}
+
+#input-trans {
+  display: flex;
+  /* 使用 flexbox 布局 */
+  align-items: center;
+  /* 垂直居中对齐 */
+  font-size: 14px;
+}
+
+.toggle-label {
+  color: #f3f3f3;
+  /* 文案颜色 */
+  margin-left: 10px;
+  /* 切换开关与文案之间的间距 */
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  /* 切换开关的宽度 */
+  height: 20px;
+  /* 切换开关的高度 */
+}
+
+.toggle-switch input {
+  opacity: 0;
+  /* 隐藏原始的 checkbox */
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #aaaaaa;
+  /* 切换开关的背景色 */
+  transition: 0.4s;
+  /* 动画效果 */
+  border-radius: 10px;
+  /* 圆角 */
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  /* 圆点的高度 */
+  width: 16px;
+  /* 圆点的宽度 */
+  left: 2px;
+  /* 圆点的左边距 */
+  bottom: 2px;
+  /* 圆点的下边距 */
+  background-color: #202020;
+  /* 圆点的颜色 */
+  transition: 0.4s;
+  /* 动画效果 */
+  border-radius: 50%;
+  /* 圆形 */
+}
+
+/* 当 checkbox 被选中时，改变切换开关的样式 */
+input:checked+.slider {
+  background-color: #007bff;
+  font-size: 14px;
+}
+
+input:checked+.slider:before {
+  transform: translateX(16px);
+  /* 圆点移动 */
+}
+
+#page-trans {
+  position: relative;
+  /* 使子元素绝对定位相对于此元素 */
+  padding: 10px;
+  /* 内边距 */
+  background-color: #333;
+  /* 背景色 */
+  color: white;
+  /* 字体颜色 */
+  border-radius: 5px;
+  /* 圆角 */
+}
+
+#page-translate-button {
+  /* background-color: #2196f3;  */
+  color: white;
+  /* 按钮字体颜色 */
+  border: none;
+  /* 去掉边框 */
+  padding: 10px 15px;
+  /* 按钮内边距 */
+  border-radius: 5px;
+  /* 按钮圆角 */
+  cursor: pointer;
+  /* 鼠标样式 */
+}
+
+#translation-status {
+  position: absolute;
+  /* 绝对定位 */
+  bottom: 10px;
+  /* 距离底部 10px */
+  left: 10px;
+  /* 距离左侧 10px */
+  /* background-color: green;  */
+  color: white;
+  /* 字体颜色 */
+  padding: 5px;
+  /* 内边距 */
+  border-radius: 5px;
+  /* 圆角 */
+  display: flex;
+  /* 使用 flexbox */
+  align-items: center;
+  /* 垂直居中 */
+}
+
+.checkmark {
+  margin-left: 5px;
+  /* 图标与文本之间的间距 */
+}
+
+.hidden {
+  display: none;
+  /* 隐藏元素 */
+}
+
+/* 选择的下拉列表 */
+.custom-select {
+  position: relative;
+  /* width: 200px; */
+  flex: 1;
+  min-width: 80px;
+  max-width: 172px;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #b8f405; */
+}
+
+.select-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+  border: 1px solid #999;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  /* color: #353535; */
+  overflow: hidden;
+}
+
+.button-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+  /* Make space for the dropdown icon */
+
+}
+
+.dropdown-icon {
+  margin-left: auto;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  border: solid #77777e;
+  border-width: 0 1px 1px 0;
+  padding: 2px;
+  width: 2px;
+  height: 2px;
+  display: inline-block;
+}
+
+.select-button:focus {
+  outline: none;
+  /* border-color: #007BFF; */
+}
+
+.select-panel {
+  /* max-width: 190px; */
+  width: 240px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  /* border: 1px solid #ccc; */
+  /* background-color: #333; */
+  background-color: #333;
+  color: #fff4e8;
+  z-index: 1000;
+  max-height: 250px;
+  /* overflow-y: auto; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#target-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  overflow: hidden;
+  /* 防止内容溢出 */
+}
+
+#target-language {
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+  /* 作为伪元素的定位基础 */
+  width: 100%;
+  top: 0;
+  /* 粘附于容器顶部 */
+}
+
+
+
+.search-box {
+  position: relative;
+  /* 为伪元素相对定位 */
+  width: 100%;
+  padding: 10px 0 10px 35px;
+  font-size: 14px;
+  border: none;
+  /* border-bottom: 1px solid #ccc; */
+  box-sizing: border-box;
+  /* background-color: #56565f52; */
+  background-color: #444;
+  color: #dbdbdb;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 1px solid #ffb700
+}
+
+.search-container::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  /* background-color: red; */
+  background-image: url("icons/search2.png");
+  background-size: contain;
+  /* 确保图片被完整显示 */
+  background-repeat: no-repeat;
+  /* 防止重复显示 */
+  z-index: 9999;
+
+}
+
+.search-box:focus {
+  outline: none;
+  /* border-color: #007bff; */
+}
+
+.select-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 下拉选项容器 */
+.options-container {
+  max-height: 200px;
+  /* 下拉选项的最大高度 */
+  overflow-y: auto;
+  /* 只对选项部分添加滚动条 */
+}
+
+
+.select-options li {
+  position: relative;
+  /* 确保伪元素相对 li 定位 */
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  /* border-bottom: 1px solid #f1f1f1; */
+  color: #dbdbdb;
+  /* margin: 5px 0 5px 0; */
+}
+
+.select-options li:hover,
+.select-options li.highlight {
+  /* background-color: #56565f52; */
+  background-color: #555;
+  /* color: #555; */
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.select-options li.selected {
+  /* background-color: #56565f52; */
+  font-size: 14px;
+  border-radius: 10px;
+  /* color: #007bff; */
+  /* color: #fd7116 */
+  color: #ffb700
+}
+
+.select-options li.selected::after {
+  content: "";
+  position: absolute;
+  /*right: 10px;  对勾图标距离 li 右边的距离 */
+  /* top: 50%; */
+  /* transform: translateY(-50%); */
+  width: 20px;
+  /* 图标宽度 */
+  height: 20px;
+  /* 图标高度 */
+  background-image: url("icons/selected.png");
+  /* 设置对勾图标的路径 */
+  background-size: contain;
+  /* 确保图片被完整显示 */
+  background-repeat: no-repeat;
+  /* 防止重复显示 */
+  margin-left: 8px;
+}
+
+.checkmark-icon {
+  margin-left: 10px;
+  /* color: #007bff; */
+}
+
+.copy-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.copied-icon {
+  width: 14px;
+  height: 14px;
+}
+
+#copy-button {
+  position: relative;
+  /* 设置相对定位，作为绝对定位的参照点 */
+  background-color: transparent;
+  border: none;
+}
+
+#copy-button:hover {
+  cursor: pointer;
+  /* 鼠标悬停时显示手形图标 */
+}
+
+#copy-button:hover::before {
+  content: "copy";
+  /* 鼠标悬停时显示的文案 */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* background-color: #0056b3;  */
+  color: #ffb700;
+  /* 文案颜色 */
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  /* 与按钮保持10px的下边距 */
+}
+
+#copy-button:disabled {
+  cursor: not-allowed;
+  /* 当按钮被禁用时，鼠标悬停显示默认指针 */
+}
+
+#copy-button.copied:hover::before {
+  content: "copied";
+  /* 点击后显示的内容 */
+  color: #00b578
+}
+
+
+.sound-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.clear-icon {
+  width: 14px;
+  height: 14px;
+}
+
+#clear-button {
+  position: relative;
+  /* 设置相对定位，作为绝对定位的参照点 */
+  cursor: pointer;
+  /* 当按钮未被禁用时，鼠标悬停显示手形图标 */
+  background-color: transparent;
+  border: none;
+}
+
+#clear-button:hover {
+  cursor: pointer;
+  /* 鼠标悬停时显示手形图标 */
+}
+
+#clear-button:hover::before {
+  content: "clear";
+  /* 鼠标悬停时显示的文案 */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* background-color: #0056b3;  */
+  color: #ffb700;
+  /* 文案颜色 */
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  /* 与按钮保持10px的下边距 */
+}
+
+#sound-button {
+  position: relative;
+  /* 设置相对定位，作为绝对定位的参照点 */
+  /* border-radius: 0 0 0 16px; */
+
+  background-color: transparent;
+  border: none;
+}
+
+#sound-button:hover {
+  cursor: pointer;
+  /* 鼠标悬停时显示手形图标 */
+}
+
+#sound-button:hover::before {
+  content: "朗读";
+  /* 鼠标悬停时显示的文案 */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* background-color: #0056b3;  */
+  color: white;
+  /* 文案颜色 */
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 8px;
+  /* 与按钮保持10px的下边距 */
+}
+
+
+#paste-button {
+  background-color: transparent;
+  color: #353535;
+  border-radius: 12px;
+  /* border: none; */
+  width: 130px;
+  height: 32px;
+  border: 1px solid #eee
+}
+
+#paste-button:hover {
+  background-color: #353535;
+  color: #f3f3f3;
+  border-radius: 8px;
+  border: none;
+}
+
+
+.copy-icon-r {
+  width: 14px;
+  height: 14px;
+}
+
+.copied-icon-r {
+  width: 14px;
+  height: 14px;
+}
+
+#copy-button-r {
+  position: relative;
+  /* 设置相对定位，作为绝对定位的参照点 */
+  background-color: transparent;
+  border: none;
+}
+
+#copy-button-r:hover {
+  cursor: pointer;
+  /* 鼠标悬停时显示手形图标 */
+}
+
+#copy-button-r1:hover::before {
+  content: "copy";
+  /* 鼠标悬停时显示的文案 */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* background-color: #0056b3;  */
+  /* color: white;  */
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  /* 与按钮保持10px的下边距 */
+}
+
+#copy-button-r:hover::before {
+  content: "copy";
+  /* 鼠标悬停时显示的文案 */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* background-color: #0056b3;  */
+  color: #ffb700;
+  /* 文案颜色 */
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 12px;
+  margin-bottom: 5px;
+  /* 与按钮保持10px的下边距 */
+}
+
+#copy-button-r:disabled {
+  cursor: not-allowed;
+  /* 当按钮被禁用时，鼠标悬停显示默认指针 */
+}
+
+#copy-button-r.copied:hover::before {
+  content: "copied";
+  /* 点击后显示的内容 */
+  color: #00b578
+}
+
+.copy-message-r {
+  font-size: 12px;
+  color: #4caf50;
+  /* 消息颜色 */
+  position: absolute;
+  top: -30px;
+  /* 将消息放在按钮的正上方 */
+  left: 50%;
+  /* 居中显示 */
+  transform: translateX(-50%);
+  z-index: 9999;
+  white-space: nowrap;
+  /* 防止消息换行 */
+}
+
+.error-popup {
+  position: fixed;
+  /* 改为 absolute 以相对于按钮定位 */
+  top: 50%;
+  /* 在按钮上方40px的位置 */
+  left: 50%;
+  /* 水平居中 */
+  transform: translate(-50%, -50%);
+  /* 完全居中 */
+  background-color: rgba(255, 0, 0, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+  animation: fadeInOut 3s ease-in-out;
+  white-space: nowrap;
+}
+
+
+.error-popup a {
+  cursor: pointer;
+  /* 鼠标悬停时显示手型 */
+}
+
+.error-popup a:hover {
+  color: #f0f0f0;
+  /* 鼠标悬停时略微变亮 */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px;
+}
+
+.loading-text {
+  color: #333;
+  font-size: 14px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

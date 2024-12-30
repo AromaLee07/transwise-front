@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translation Tool</title>
+  <link rel="stylesheet" href="popup.css" />
+  <!-- 引入 CSS 文件 -->
+</head>
+
+<body>
+  <div id="app">
+    <div id="user-interface">
+      <header>
+        <div class="logo-info">
+          <img src="icons/icons8-translate-48.png" alt="Logo" class="logo" />
+          <!-- <span id="username"><h2>TransWise</h2></span> -->
+          <span style="font-size: 22px;">TransWise</span>
+        </div>
+        <div class="user-info" id="user-info">
+          <img src="icons/avatar.png" alt="Avatar" id="user-avatar" />
+          <div id="logout-popup" class="logout-popup" hidden>
+            <button id="logout-button" class="logout-button">Logout</button>
+          </div>
+        </div>
+      </header>
+      <main>
+        <div class="translation-section">
+          <!-- <div class="language-select"> -->
+          <div class="other-translation">
+            <div id="input-trans">
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggle-translate" />
+                <span class="slider"></span>
+              </label>
+              <span class="toggle-label">输入框翻译</span>
+            </div>
+          </div>
+          <div class="selections">
+            <div id="source-language" class="custom-select language-select">
+              <button id="source-dropdown-button" class="select-button">
+                <span class="button-label">auto detect</span>
+                <span class="dropdown-icon"></span>
+                <!-- 下拉箭头 -->
+              </button>
+              <div id="source-dropdown-panel" class="select-panel hidden">
+                <div class="search-container">
+                  <input type="text" id="source-search-box" class="search-box" placeholder="搜索语言..." />
+                </div>
+                <div class="options-container">
+                  <ul id="source-language-options" class="select-options">
+                    <!-- 语言选项将在 JavaScript 中动态加载 -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="swap-icon">
+              <img src="icons/swap.png" class="swap-icon"/>
+            </div>
+            <div id="target-language" class="custom-select language-select">
+              <button id="target-dropdown-button" class="select-button">
+                <span class="button-label">auto detect</span>
+                <span class="dropdown-icon"></span>
+                <!-- 下拉箭头 -->
+              </button>
+              <div id="target-dropdown-panel" class="select-panel hidden">
+                <div class="search-container">
+                  <input type="text" id="target-search-box" class="search-box" placeholder="搜索语言..." />
+                </div>
+                <div class="options-container">
+                  <ul id="target-language-options" class="select-options">
+                    <!-- 语言选项将在 JavaScript 中动态加载 -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="source-textarea">
+            <textarea id="text-input" placeholder="Enter text (max 2000 characters)"></textarea>
+            <div class="tools-in-textarea">
+              <div id="button-container">
+                <!-- <button id="sound-button">
+                    <img src="icons/sound2.png" class="sound-icon" />
+                  </button> -->
+                <button id="copy-button">
+                  <img src="icons/copy2.png" class="copy-icon" />
+                  <img src="icons/complete_icon2.png" class="copied-icon" hidden />
+
+                </button>
+
+                <button id="clear-button" style="display: none">
+                  <img src="icons/delete2.png" class="clear-icon" />
+                </button>
+                <button id="paste-button" style="display: none">
+                  Paste Selected
+                </button>
+              </div>
+              <!-- Added copy button -->
+              <div id="translation-container">
+                <div class="loading-icon" style="display: none;">
+                  <img src="icons/loading-spinner.gif" />
+                </div>
+                <button id="translate-button" disabled>
+
+                  <span class="button-text">Translate</span>
+                </button>
+
+                <span id="char-limit-message" style="display: none; color: #e35b02">
+                  Character limit of 2000 reached
+                </span>
+                <!-- <span id="trigger-limit-message" style="display: none; color: #e35b02"></span>
+                    超过当日的最大次数
+                  </span> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- </div> -->
+        </div>
+        <div class="model-selection1">
+          <div class="add-model">
+            <button id="addModel">
+              <img src="icons/plus.png" alt="plus" class="plusIcon" />
+              Settings
+            </button>
+            <!-- 下拉列表 -->
+            <div id="model-dropdown" class="hidden">
+              <div class="model-dropdown-item">
+                <label class="item-lable">
+                  <img src="icons/gpt.png" alt="Icon" class="model-icon" />
+
+                  chatgpt
+                </label>
+                <input type="checkbox" class="model-checkbox" data-model="chatgpt" />
+              </div>
+              <div class="model-dropdown-item">
+                <label class="item-lable">
+                  <img src="icons/translate_google.png" alt="Icon" class="model-icon" />
+                  google
+                </label>
+                <input type="checkbox" class="model-checkbox" data-model="google" />
+              </div>
+              <div class="model-dropdown-item">
+                <label class="item-lable">
+                  <img src="icons/translate_bing.png" alt="Icon" class="model-icon" />
+                  microsoft
+                </label>
+                <input type="checkbox" class="model-checkbox" data-model="microsoft" />
+              </div>
+              <!-- <div class="model-dropdown-item">
+                  模型4
+                  <input
+                    type="checkbox"
+                    class="model-checkbox"
+                    data-model="模型4"
+                  />
+                </div>
+                <div class="model-dropdown-item">
+                  模型5
+                  <input
+                    type="checkbox"
+                    class="model-checkbox"
+                    data-model="模型5"
+                  />
+                </div> -->
+            </div>
+          </div>
+
+          <div id="delete-model" class="delete-model">
+            <div id="selected-models">
+              <!-- 这里将动态添加已选择的模型图标 -->
+            </div>
+          </div>
+        </div>
+        <div class="model-selection">
+          <details class="model-group">
+            <summary class="model-item" data-model="chatgpt">
+              <img src="icons/gpt.png" alt="Icon" class="model-icon-r" />
+              chatgpt
+              <img src="icons/right-arrow1.png" class="arrow" alt="Expand/Collapse" />
+            </summary>
+            <div id="result-container-gpt" class="result-container hidden">
+              <!-- 翻译结果来自: GPT-4o mini -->
+            </div>
+            <div id="tools-result-container-gpt" class="tools-result-container" hidden>
+              <!-- <button id="copy-button-r" class="copy-button-r">
+                  <img src="icons/copy2.png" class="copy-icon-r" />
+                  <img
+                    src="icons/complete_icon2.png"
+                    class="copied-icon-r"
+                    hidden
+                  />
+                  <div
+                    id="copyMessage"
+                    class="copy-message-r"
+                    style="display: none"
+                  >
+                    已复制!
+                  </div>
+                </button> -->
+              <button id="copy-button-r" class="copy-button-r">
+                <img src="icons/copy2.png" class="copy-icon-r" />
+                <img src="icons/complete_icon2.png" class="copied-icon-r" hidden />
+
+              </button>
+            </div>
+          </details>
+          <details class="model-group">
+            <summary class="model-item" data-model="google">
+              <img src="icons/translate_google.png" alt="Icon" class="model-icon-r" />
+              google
+              <img src="icons/right-arrow1.png" class="arrow" alt="Expand/Collapse" />
+            </summary>
+            <div id="result-container-google" class="result-container hidden">
+            </div>
+            <div id="tools-result-container-google" class="tools-result-container" hidden>
+              <!-- <button id="copy-button-r" class="copy-button-r">
+                  <img src="icons/copy2.png" class="copy-icon-r" />
+                  <img
+                    src="icons/complete_icon2.png"
+                    class="copied-icon-r"
+                    hidden
+                  />
+                  <div
+                    id="copyMessage"
+                    class="copy-message-r"
+                    style="display: none"
+                  >
+                    已复制!
+                  </div>
+                </button> -->
+              <button id="copy-button-r" class="copy-button-r">
+                <img src="icons/copy2.png" class="copy-icon-r" />
+                <img src="icons/complete_icon2.png" class="copied-icon-r" hidden />
+
+              </button>
+            </div>
+          </details>
+          <details class="model-group">
+            <summary class="model-item" data-model="microsoft">
+              <img src="icons/translate_bing.png" alt="Icon" class="model-icon-r" />
+              <label class="model-name">microsoft</label>
+              <img src="icons/right-arrow1.png" class="arrow" alt="Expand/Collapse" />
+            </summary>
+            <div id="result-container-microsoft" class="result-container hidden"></div>
+            <div id="tools-result-container-microsoft" class="tools-result-container" hidden>
+              <!-- <button id="copy-button-r" class="copy-button-r">
+                  <img src="icons/copy2.png" class="copy-icon-r" />
+                  <img
+                    src="icons/complete_icon2.png"
+                    class="copied-icon-r"
+                    hidden
+                  />
+                  <div
+                    id="copyMessage"
+                    class="copy-message-r"
+                    style="display: none"
+                  >
+                    已复制!
+                  </div>
+                </button> -->
+              <button id="copy-button-r" class="copy-button-r">
+                <img src="icons/copy2.png" class="copy-icon-r" />
+                <img src="icons/complete_icon2.png" class="copied-icon-r" hidden />
+
+              </button>
+            </div>
+          </details>
+        </div>
+        <!-- </div> -->
+      </main>
+    </div>
+
+    <div id="loading-overlay" style="display: none;">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading...</div>
+      </div>
+    </div>
+
+    <div id="login-overlay" class="overlay">
+      <div class="login-box">
+        <!-- <h2>Login with Google</h2> -->
+        <div class="login-header">
+
+
+          <img src="icons/icons8-translate-48.png" alt="PromptWise Logo" />
+          <span style="font-size: 22px">LogIn TransWise</span>
+        </div>
+
+        <button id="google-login-button">LogIn</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="franc/franc-browser.js"></script>
+  <script src="popup.js"></script>
+
+  <!-- 引入 JavaScript 文件 -->
+</body>
+
+</html>

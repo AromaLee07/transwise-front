@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "TranslateX",
+  "version": "1.0",
+  "action": {
+    "default_icon": "icons/16.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html", "sidePanel.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "side_panel": { "default_path": "sidePanel.html" }
+}

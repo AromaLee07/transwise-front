@@ -1,0 +1,516 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* font-family: "Roboto", "Open Sans", Arial, sans-serif; */
+  font-family: 'Source Han Mono', 'Courier New', Courier, monospace;
+
+  /* background: linear-gradient(to bottom right, #f0f4ff, #eef9f6); */
+  /* background: linear-gradient(135deg, #fff8f1, #fff2e6, #ffe9d6, #fff1e3, #fff9f5); */
+  /* background: linear-gradient(135deg, #fffaf7, #fff6ef, #fff1e5, #fff7f0, #fffbf8); */
+  /* background: linear-gradient(135deg, #fff9f5, #fff2e8, #ffe8d9, #fff0e6, #f9f5ff); */
+  /* background: linear-gradient(135deg, #fff8f4, #ffeee4, #fff1e6, #f4f8ff, #fff6f1); */
+  background: linear-gradient(135deg, #fff6f1, #fff1e8, #f8fff9, #fff4eb, #fff8f4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #f8f6f3; */
+
+}
+
+.login-container {
+  width: 70%;
+  height: 30%;
+  max-width: 400px;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  /* background-color: #5c5eff; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 让子元素垂直居中 */
+  align-items: center;
+
+}
+
+.login-box {
+  flex: 1;
+  width: calc(100% - 20px);
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+#login-options {
+  width: 100%;
+  flex: 1;
+  margin-top: 20px;
+  /* text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px; */
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  /* margin-bottom: 10px; */
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover; /* 确保图片填满圆形且不变形 */
+  border-radius: 50%; /* Ensure the image itself is also round */
+  margin-right: 5px;
+}
+
+.logo h1 {
+  /* margin: 10px 0 0; */
+  font-size: 24px;
+  color: #333;
+}
+
+.register-text {
+  margin: 0 0 30px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.register-text a {
+  color: #5c5c66;
+  text-decoration: underline;
+  /* font-weight: bold; */
+}
+
+.register-text a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.google-login,
+.email-login,
+.apple-login {
+  width: 100%;
+  height: 40px;
+  padding: 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.google-login {
+  /* background-color: #5c5eff; */
+  /* background-color: #353535; */
+  /* background-color: #669DF6; */
+  background-color: #317BE4;
+  /* background-color: #fff4e8; */
+  /* background-color: #333; */
+  color: #fff4e8;
+}
+
+.google-login:hover {
+  /* background-color: #2a2a2a;   */
+  background: linear-gradient(135deg, #4285F4 0%, #317BE4 100%);
+
+  transform: translateY(-2px);  /* 轻微上浮效果 */
+  /* box-shadow: 0 2px 8px rgba(53, 53, 53, 0.2);   */
+  box-shadow: 0 4px 12px rgba(49, 123, 228, 0.3);
+
+}
+
+.google-login:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(49, 123, 228, 0.2);
+}
+
+/* .google-login:disabled {
+  background-color: #4a4a4a;  
+  color: rgba(255, 244, 232, 0.5);  
+  transform: none;  
+  box-shadow: none; 
+  cursor: not-allowed; 
+  opacity: 0.7;  
+} */
+
+.google-login:disabled {
+  background: linear-gradient(135deg, #A4C2F4 0%, #89A9E4 100%);  /* 更浅的蓝色渐变 */
+  color: rgba(255, 255, 255, 0.7);  /* 半透明白色文字 */
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.8;
+  border: 1px solid rgba(255, 255, 255, 0.1);  /* 微妙的边框 */
+  pointer-events: none;  /* 禁用所有鼠标事件 */
+}
+
+#button-content {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* public/styles/login.css */
+.button-loading {
+  background-color: rgba(0, 0, 0, 0.1); /* 加载时的背景颜色 */
+  /* background-color: red;  */
+
+  /* color: #fff; 加载时的文字颜色 */
+  cursor: not-allowed; /* 禁用状态的光标 */
+  position: relative; /* 使 spinner 可以绝对定位 */
+  padding: 10px; /* 添加一些内边距以增加按钮的大小 */
+
+}
+
+.spinner {
+  width: 20px; /* Spinner 的大小 */
+  height: 20px; /* Spinner 的大小 */
+  /* border: 3px solid rgba(0, 0, 0, 0.1); */
+  border: 3px solid rgba(255, 244, 232, 0.2);  /* 使用 #fff4e8 的半透明版本 */
+
+  /* border-top-color: #ec0808; */
+  /* border-top-color: #333; */
+  border-top-color: #fff4e8;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute; /* 绝对定位 */
+  top: 25%; /* 垂直居中 */
+  left: 50%; /* 水平居中 */
+  transform: translate(-50%, -50%); /* 使 spinner 完全居中 */
+  display: none; /* 默认隐藏 */
+}
+
+.spinner-google1 {
+  width: 20px; /* Spinner 的大小 */
+  height: 20px; /* Spinner 的大小 */
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  /* border-top-color: #ec0808; */
+  border-top-color: #333;
+
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute; /* 绝对定位 */
+  top: 25%; /* 垂直居中 */
+  left: 50%; /* 水平居中 */
+  transform: translate(-50%, -50%); /* 使 spinner 完全居中 */
+  display: none; /* 默认隐藏 */
+}
+
+.spinner-login {
+  width: 20px; /* Spinner 的大小 */
+  height: 20px; /* Spinner 的大小 */
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  /* border-top-color: #ec0808; */
+  border-top-color: #333;
+
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: absolute; /* 绝对定位 */
+  top: 25%; /* 垂直居中 */
+  left: 50%; /* 水平居中 */
+  transform: translate(-50%, -50%); /* 使 spinner 完全居中 */
+  display: none; /* 默认隐藏 */
+}
+
+.button-loading .spinner {
+  display: block; /* 加载时显示 spinner */
+}
+.button-loading .spinner-google1 {
+  display: block; /* 加载时显示 spinner */
+}
+.button-loading .spinner-login {
+  display: block; /* 加载时显示 spinner */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.email-login img {
+  width: 24px;
+  height: 20px;
+  object-fit: cover; /* 确保图片填满圆形且不变形 */
+  margin-right: 10px;
+}
+
+.google-login img,
+.apple-login img {
+  width: 24px; /* 设置宽度与.top-menu的高度一致，以创建圆形 */
+  height: 24px; /* 设置高度与.top-menu的高度一致，以创建圆形 */
+  object-fit: cover; /* 确保图片填满圆形且不变形 */
+  border-radius: 50%;
+  overflow: hidden; /* 隐藏溢出的内容 */
+  /* background-color: aqua; */
+  margin-right: 10px;
+}
+
+.separator {
+  /* margin-top: 10px; */
+  width: 100%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  /* margin: 10px 0; */
+  font-size: 14px;
+  color: #aaa;
+  /* background-color: rgb(60, 6, 237); */
+}
+
+/* .email-login {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+} */
+
+.apple-login {
+  background-color: #000;
+  color: white;
+}
+
+.terms {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.terms a {
+  color: #5c5c66;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.hr-style {
+  /*background-color: #F0F0F0;  分割线的背景色为深灰色 */
+  /* background-color: #aaa; */
+  width: 45%; /* 分割线宽度为容器宽度的50% */
+  border: 0;
+  /* border-top: 1px solid #ccc; 
+    border-top: 1px solid #f5f5f5;; */
+  border-top: 1px solid #eee;
+  /* border-top: 1px solid #f10606; */
+}
+
+#email-login-form {
+  flex-grow: 1;
+  /* display: none; */
+  width: 100%; /* 让表单占满宽度 */
+  max-width: 400px; /* 可选：限制表单的最大宽度 */
+  /* padding: 20px; 可选：增加内边距 */
+  min-height: 300px;
+  background: transparent;
+}
+
+.email-login-container {
+  /* background-color: #afbebe;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+   width: 100%; 
+  padding: 20px;
+  flex: 1;*/
+  /* background-color: #ffffff; */
+  padding: 10px;
+  border-radius: 8px;
+  /* box-shadow: 0 4px 1 0px rgba(0, 0, 0, 0.1); */
+  max-width: 400px;
+  width: calc(100%-10px);
+  text-align: center;
+  font-size: 16px;
+}
+
+/* 输入框和标签布局 */
+
+#email-login {
+  flex: 1;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  width: calc(100%-10px);
+  padding: 10px;
+  margin: 20px 0;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* 设置表单项的容器样式 */
+.user-login,
+.password-login {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+  /* margin-bottom: 15px; */
+  height: auto;
+  width: 100%;
+}
+
+/* 设置label的宽度，确保它们在输入框的左侧 */
+
+/* 设置输入框样式 */
+/* input[type="text"], input[type="password"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: calc(100% - 90px); 
+} */
+
+label {
+  /* width: 80px; */
+  width: 20%;
+  height: 100%;
+  text-align: left; /* Label 左对齐 */
+  /* background-color: #45a049; */
+  margin-right: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  /* background-color: purple; */
+  flex-grow: 1; /* 输入框占据剩余空间 */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  width: 100%; /* 确保输入框填充剩余空间 */
+}
+
+/* .register-text{
+  background-color: #008080;
+} */
+.forgot-password {
+  font-size: 14px;
+  margin: 0 0 20px 0;
+  color: #777;
+}
+
+/* input[type="text"], input[type="password"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+} */
+
+/* 提交按钮和Google登录按钮样式 */
+button[type="submit"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* public/styles/login.css */
+#email-submit-button:disabled {
+  background-color: #ccc; /* 灰色背景 */
+  color: #666; /* 灰色文字 */
+  cursor: not-allowed; /* 鼠标指针样式 */
+  opacity: 0.6; /* 透明度 */
+}
+
+/* button[type="submit"]:hover, .google-login:hover {
+  background-color: #45a049;
+} */
+
+/* .register-text-password{
+  background-color: #008080;
+} */
+
+.register-text-password {
+  /* margin: 0 0 30px 0; */
+  font-size: 14px;
+  color: #777;
+}
+
+.register-text-password a {
+  color: #5c5c66;
+  text-decoration: underline;
+  /* font-weight: bold; */
+}
+
+.register-text-password a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  color: #aaa;
+  text-decoration: none;
+}
+
+#button-content1 {
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+#email-error-message{
+  color: red;
+  font-size: 12px;
+  margin-top: 5px; /* 错误信息与输入框之间的间距 */
+  width: 100%;
+  height: 20px;
+  top: 0;
+  left: 0;
+
+}
+
+
