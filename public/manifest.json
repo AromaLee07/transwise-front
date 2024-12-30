@@ -14,9 +14,6 @@
       "js": ["content.js", "franc/franc-browser-t1.js"]
     }
   ],
-  "host_permissions": [
-    "http://localhost:5000/*" 
-  ],
   "background": {
     "service_worker": "background.js"
   },

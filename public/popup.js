@@ -36,13 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const sourceLang = document.getElementById("source-dropdown-button").textContent;
 
-    console.log("getLanguageValueFromText(sourceLang) is:", getLanguageValueFromText(sourceLang));
+    
 
     const targetLang = document.getElementById("target-dropdown-button").textContent.trim('');
-    console.log("source-dropdown-button is: ", document.getElementById("source-dropdown-button").textContent);
+    
     const textInput = document.getElementById("text-input");
     textInputValue = textInput.value;
-    console.log("455 is: ", textInputValue);
+    
     let data = "";
 
     // 这里可以添加翻译逻辑
@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".model-checkbox:checked")
     ).map((checkbox) => checkbox.getAttribute("data-model"));
 
-    console.log("sourceLang is: ", sourceLang);
-    console.log("targetLang is: ", targetLang);
+    
+    
 
     try {
       // 先检查配额
@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const quotaData = await quotaResponse.json();
 
-      console.log("quotaData is: ", quotaData);
-      console.log("quotaData.data.canTranslate is: ", quotaData.data.canTranslate);
-      console.log("quotaData.data.remaining is: ", quotaData.data.remaining);
-      console.log("quotaData.data.dailyLimit is: ", quotaData.data.dailyLimit);
+      
+      
+      
+      
 
       // if (!quotaData.data.canTranslate || quotaData.data.remaining < quotaData.data.dailyLimit) {
       if (!quotaData.data.canTranslate) {
 
-        console.log("111--00");
+        
 
         // 检查是否已存在error popup
         let errorPopup = document.querySelector('.error-popup');
@@ -120,21 +120,21 @@ document.addEventListener("DOMContentLoaded", function () {
       let targetLangCode = getLanguageValueFromText(targetLang)
 
       if (!sourceLangCode) {
-        console.log("Error: sourceLangCode or targetLangCode is null");
+        
         sourceLangCode = 'en';
       }
       if (!targetLangCode) {
-        console.log("Error: sourceLangCode or targetLangCode is null");
+        
         const browserLang = navigator.language.split('-')[0];
         targetLangCode = browserLang;
       }
 
-      console.log("22sourceLangCode is: ", sourceLangCode);
-      console.log("22targetLangCode is: ", targetLangCode);
+      
+      
 
       // 如果源语言和目标语言相同，直接复制输入内容
       if (sourceLangCode === targetLangCode) {
-        console.log("Source and target languages are the same, copying text directly");
+        
         // const outputContainer = document.getElementById("output-container");
         // const inputText = document.getElementById("input-text").value;
         // outputContainer.value = inputText;
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
           google: textInputValue,
           microsoft: textInputValue
         };
-        console.log("444data is: ", data);
+        
 
       } else {
 
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           data = await response.json(); // 确保使用 await 等待解析
-          console.log("data is:", data);
+          
         } catch (error) {
           console.error(error);
           alert(error.message);
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
           buttonText.style.display = "inline"; // 恢复文本显示
           loadingIcon.style.display = "none"; // 隐藏加载图标
           translateButton1.disabled = false;
-          console.log("ddddddddddddddddddddddd");
+          
         }
 
       }
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
       buttonText.style.display = "inline"; // 恢复文本显示
       loadingIcon.style.display = "none"; // 隐藏加载图标
       translateButton1.disabled = false;
-      // console.log("ddddddddddddddddddddddd");
+      // 
     }
 
     const copyButtonResult = document.getElementById("copy-button-r");
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
       );
 
 
-      console.log("tools-" + modelResult[model]);
+      
       // console.log("renshengbenlai: ", result)
       const modelItems = document.querySelectorAll(".model-item[data-model]");
       const item = Array.from(modelItems).find((item) => item.getAttribute("data-model") === model);
@@ -226,11 +226,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (resultContainer) {
         resultContainer.innerText = translation; // 设置内容
         // resultContainer.classList.remove("hidden"); // 显示结果容器
-        console.log("-----------------------------");
+        
         // arrowImg.src = 'icons/down-arrow.png';
         arrowImg.src = "icons/down-arrow1.png"; // 展开时显示向下箭头
         resultContainer.classList.remove("hidden");
-        console.log("toolsResultContainer is:", toolsResultContainer);
+        
         toolsResultContainer.classList.remove("hidden");
         toolsResultContainer.removeAttribute("hidden");
         const copyButtonResult = toolsResultContainer.querySelector(".copy-button-r");
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 2000);
               }
             } catch {
-              console.log("复制失败");
+              
             }
           });
         }
@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
           detailsElement.open = true; // 展开 <details> 元素
         }
 
-        console.log("999999999");
+        
       }
     }
   });
@@ -303,15 +303,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 通常语言代码的形式为 "en-US"，您可能需要获取主要语言部分
   const primaryLanguage = browserLanguage.split("-")[0];
-  console.log(primaryLanguage); // 输出可能是 "en", "zh", 等
+   // 输出可能是 "en", "zh", 等
 
   // 模拟用户登录
   googleLoginButton.addEventListener("click", function () {
     // 这里可以添加 Google 登录逻辑
     // 登录成功后
     loginOverlay.classList.remove("hidden");
-    console.log("111111111111");
-    console.log("7777777777");
+    
+    
     userInterface.classList.remove("hidden");
   });
 
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       if (response.ok) {
-        console.log("jwt has been cleared by backend");
+        
         logoutClearInfo();
         window.location.href = "/popup.html"; // 重定向到登录页面
       } else {
@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("111111111111");
+  
   let modelItems = document.querySelectorAll(".model-item[data-model]");
   let resultContainers = {
     "chatgpt": document.getElementById("result-container-gpt"),
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "microsoft": document.getElementById("result-container-microsoft"),
   };
 
-  console.log("resultContainers :", resultContainers);
+  
 
   // 默认显示的模型项
   const defaultModels = Array.from(modelItems).slice(0, 3);
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 设置默认选中的复选框
   defaultModels.forEach((item) => {
     const modelName = item.getAttribute("data-model");
-    console.log("DDFDFD:", modelName);
+    
     const checkbox = document.querySelector(
       `#model-dropdown .model-checkbox[data-model="${modelName}"]`
     );
@@ -377,24 +377,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 点击翻译服务按钮，显示下拉列表
   document.getElementById("addModel").addEventListener("click", function () {
-    console.log("454534534543");
+    
     const dropdown = document.getElementById("model-dropdown");
     // 如果下拉列表是隐藏的，则显示它，否则隐藏
     if (dropdown.classList.contains("hidden")) {
       dropdown.classList.remove("hidden"); // 显示下拉列表
-      console.log("----------------");
+      
     } else {
       dropdown.classList.add("hidden"); // 隐藏下拉列表
-      console.log("++++++++-------");
+      
     }
     // dropdown.classList.toggle("hidden");
   });
 
   // 点击模型，显示翻译结果框
   document.querySelectorAll(".model-item").forEach((item) => {
-    console.log("22222");
+    
     item.addEventListener("click", function () {
-      console.log("3333333 item", item);
+      
 
       const arrowImg = item.querySelector(".arrow");
 
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", function () {
       //     `result-container-${modelName}`
       //   );
 
-      console.log("modelName is: ", modelName);
+      
       const resultContainer = document.getElementById(modelResult[modelName]);
 
       const toolsResultContainer = document.getElementById(
@@ -412,11 +412,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const copyButtonResult =
         toolsResultContainer.querySelector(".copy-button-r");
-      console.log("copyButtonResult is: ", copyButtonResult);
+      
 
       // 切换显示状态
       if (resultContainer) {
-        console.log("+++++++++0000000:", resultContainer);
+        
         // resultContainer.classList.toggle("hidden"); // 切换 hidden 类
         if (resultContainer.classList.contains("hidden")) {
           arrowImg.src = "icons/down-arrow1.png"; // 展开时显示向下箭头
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const copiedIcon = copyButton.querySelector(".copied-icon-r");
                 const copyMessage = document.getElementById("copyMessage");
                 if (successful) {
-                  // console.log("内容已复制");
+                  // 
 
                   // // 显示对勾和复制消息
                   // // 隐藏复制图标，显示已复制图标
@@ -472,14 +472,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     copyIcon.hidden = false;
                   }, 2000); // 2秒后恢复到"复制"
                 } else {
-                  console.log("复制失败");
+                  
                 }
               } catch (err) {
                 console.error("无法复制", err);
               }
             });
           }
-          console.log("copyButtonResult.disabled:", copyButtonResult.disabled);
+          
         } else {
           arrowImg.src = "icons/right-arrow1.png"; // 展开时显示向下箭头
           resultContainer.classList.add("hidden");
@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelectorAll("#model-dropdown .model-checkbox")
     .forEach((checkbox) => {
       checkbox.addEventListener("change", async function () {
-        console.log("Checkbox changed:", this.checked); // 输出复选框状态
+         // 输出复选框状态
 
         const modelName = this.getAttribute("data-model");
         const modelGroup = document.createElement("details");
@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           if (!modelItem) {
-            console.log("不存在");
+            
             // 添加容器的模型图标
 
             const newModelItem = document.createElement("summary");
@@ -540,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
             newResultContainer.innerText = ''; // 设置内容
 
 
-            console.log("newResultContainer is:", newResultContainer);
+            
 
             // 添加对应的结果框
             modelGroup.appendChild(newResultContainer); // 添加到 model-group
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 将新创建的结果框添加到 resultContainers 对象中
             resultContainers[modelName] = newResultContainer;
 
-            console.log("resultContainers is11:", resultContainers);
+            
 
             // 添加到模型选择中
             document.querySelector(".model-selection").appendChild(modelGroup);
@@ -582,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 更新 modelItems 集合
             modelItems = document.querySelectorAll(".model-item[data-model]"); // 重新选择所有模型项
 
-            console.log("modelItems is1212121212: ", modelItems);
+            
 
             // 添加模型图标
 
@@ -604,21 +604,21 @@ document.addEventListener("DOMContentLoaded", function () {
               // let sourceLangCode = getLanguageValueFromText(sourceLang)
               // let targetLangCode = getLanguageValueFromText(targetLang)
 
-              // console.log("11sourceLang is: ", sourceLang);
-              // console.log("11targetLang is: ", targetLang);
+              // 
+              // 
 
               // if (!sourceLangCode) {
-              //   console.log("Error: sourceLangCode or targetLangCode is null");
+              //   
               //   sourceLangCode = 'en';
               // }
               // if (!targetLangCode) {
-              //   console.log("Error: sourceLangCode or targetLangCode is null");
+              //   
               //   const browserLang = navigator.language.split('-')[0];
               //   targetLangCode = browserLang;
               // }
 
-              // console.log("sourceLangCode is: ", sourceLangCode);
-              // console.log("targetLangCode is: ", targetLangCode);
+              // 
+              // 
 
               // const requestBody = {
               //   sourceLangCode,
@@ -639,14 +639,14 @@ document.addEventListener("DOMContentLoaded", function () {
               //   }
               // );
 
-              // console.log("0000response is: ", response);
+              // 
 
               // if (!response.ok) {
               //   throw new Error("Network response was not ok");
               // }
 
               // const data = await response.json(); // 确保使用 await 等待解析
-              // console.log("data is:", data);
+              // 
 
               // const translation = data[modelName];
               const translation = '';
@@ -659,7 +659,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               newResultContainer.classList.remove("hidden");
 
-              console.log("newResultContainer: ", newResultContainer);
+              
 
               newResultContainerTools.classList.remove("hidden");
               newResultContainerTools.removeAttribute("hidden");
@@ -689,7 +689,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const copiedIcon = copyButton.querySelector(".copied-icon-r");
                     const copyMessage = document.getElementById("copyMessage");
                     if (successful) {
-                      // console.log("内容已复制");
+                      // 
 
                       // // 显示对勾和复制消息
                       // // 隐藏复制图标，显示已复制图标
@@ -712,7 +712,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         copyIcon.hidden = false;
                       }, 2000); // 2秒后恢复到"复制"
                     } else {
-                      console.log("复制失败");
+                      
                     }
                   } catch (err) {
                     console.error("无法复制", err);
@@ -751,11 +751,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const modelItem = document.querySelector(
               `.model-item[data-model="${modelName}"]`
             );
-            console.log("modelName xxxx is: ", modelName);
+            
             if (modelItem) {
               const modelGroup = modelItem.parentElement; // 获取 model-group
 
-              console.log("modelGroup isxxxxxx:  ", modelGroup);
+              
 
               modelGroup.remove();
               //   resultContainers[modelName].classList.add("hidden"); // 隐藏对应的结果框
@@ -766,7 +766,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
               if (resultContainer) {
                 resultContainer.classList.add("hidden");
-                console.log("===================");
+                
                 arrowImg.src = "icons/right-arrow1.png";
               }
               //   removeSelectedModelIcon(selectedModel); // 移除图标
@@ -782,7 +782,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const selectedModels = Array.from(
             document.querySelectorAll(".model-checkbox:checked")
           ).map((checkbox) => checkbox.getAttribute("data-model"));
-          console.log("selectedModels is: ", selectedModels);
+          
 
           const sourceLang = document.getElementById("source-dropdown-button").textContent.trim('');
           const targetLang = document.getElementById("target-dropdown-button").textContent.trim('');
@@ -790,21 +790,21 @@ document.addEventListener("DOMContentLoaded", function () {
           let sourceLangCode = getLanguageValueFromText(sourceLang)
           let targetLangCode = getLanguageValueFromText(targetLang)
 
-          console.log("11sourceLang is: ", sourceLang);
-          console.log("11targetLang is: ", targetLang);
+          
+          
 
           if (!sourceLangCode) {
-            console.log("Error: sourceLangCode or targetLangCode is null");
+            
             sourceLangCode = 'en';
           }
           if (!targetLangCode) {
-            console.log("Error: sourceLangCode or targetLangCode is null");
+            
             const browserLang = navigator.language.split('-')[0];
             targetLangCode = browserLang;
           }
 
-          console.log("sourceLangCode is: ", sourceLangCode);
-          console.log("targetLangCode is: ", targetLangCode);
+          
+          
 
           const requestBody = {
             sourceLangCode,
@@ -825,14 +825,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           );
 
-          console.log("0000response is: ", response);
+          
 
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
 
           const data = await response.json(); // 确保使用 await 等待解析
-          console.log("data is:", data);
+          
 
           for (const [model, translation] of Object.entries(data)) {
             const resultContainer = document.getElementById(modelResult[model]);
@@ -850,7 +850,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // newResultContainer.classList.remove("hidden");
 
-          // console.log("newResultContainer: ", newResultContainer);
+          // 
 
           // newResultContainerTools.classList.remove("hidden");
           // newResultContainerTools.removeAttribute("hidden");
@@ -880,7 +880,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const copiedIcon = copyButton.querySelector(".copied-icon-r");
                 const copyMessage = document.getElementById("copyMessage");
                 if (successful) {
-                  // console.log("内容已复制");
+                  // 
 
                   // // 显示对勾和复制消息
                   // // 隐藏复制图标，显示已复制图标
@@ -903,7 +903,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     copyIcon.hidden = false;
                   }, 2000); // 2秒后恢复到"复制"
                 } else {
-                  console.log("复制失败");
+                  
                 }
               } catch (err) {
                 console.error("无法复制", err);
@@ -1015,7 +1015,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // closeButton.innerText = "x"; // 关闭按钮的图标
     iconClosed.addEventListener("click", function () {
-      console.log("iconClosed.addEventListener");
+      
       // 确保至少保留一个模型
       // 检查当前已选择的模型数量
       const remainingModels = selectedModelsContainer.children.length;
@@ -1034,15 +1034,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (checkbox) {
           checkbox.checked = false; // 取消复选框选中状态
         }
-        console.log("modelname is", modelName);
-        console.log("modelItems is: ", modelItems);
+        
+        
         const modelItem = Array.from(modelItems).find(
           (item) => item.getAttribute("data-model") === modelName
         );
-        console.log("modelItem is:", modelItem);
+        
         if (modelItem) {
-          console.log("modelItem.remov....");
-          console.log("modelItem is xxxx: ", modelItem);
+          
+          
           const modelGroup = modelItem.parentElement;
           modelGroup.remove();
           // modelItem.remove(); // 从模型选择中移除
@@ -1063,7 +1063,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 移除已选择模型的图标
   function removeSelectedModelIcon(modelName) {
-    console.log("remoing:", modelName);
+    
     const selectedModelsContainer = document.getElementById("selected-models");
     const modelIcon = Array.from(selectedModelsContainer.children).find(
       (icon) => {
@@ -1088,7 +1088,7 @@ translateButton.disabled = true;
 textInput.addEventListener("input", function (e) {
   const textLength = textInput.value.length;
 
-  console.log("textLenght: ", textLength);
+  
 
   if (textLength > 2000) {
     // 隐藏翻译按钮，显示超限提示
@@ -1113,10 +1113,10 @@ textInput.addEventListener("input", function (e) {
     // updateCopyButtonState();
   }
   // 监听语言变化
-  console.log(textInput.value);
+  
   detectAndUpdateLanguage(textInput.value)
 
-  // console.log("监听输入框的语言：", detectAndUpdateLanguage(textInput.value));
+  // 
 });
 
 const pasteButton = document.getElementById("paste-button");
@@ -1137,10 +1137,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     copyButton.style.display = "none";
     // soundButton.style.display = "none";
     clearButton.style.display = "none";
-    console.log("Showing paste button"); // 输出状态
-    console.log("Text selected in popup:", request.text);
+     // 输出状态
+    
     selectedText = request.text; // 存储选中的文本
-    console.log("selectedTextxxxxxx is:", selectedText);
+    
 
     // 监听粘贴按钮的点击事件
     pasteButton.addEventListener("click", function () {
@@ -1154,13 +1154,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       clearButton.style.display = "block";
     });
   } else if (request.action === "textNotSelected") {
-    console.log("textNotSelected isdddddd");
+    
     pasteButton.style.display = "none";
     copyButton.style.display = "block";
 
     // soundButton.style.display = "block";
     clearButton.style.display = "block";
-    console.log("No text selected11111");
+    
   }
 });
 
@@ -1181,7 +1181,7 @@ copyButton.addEventListener("click", async function () {
     const copiedIcon = copyButton.querySelector(".copied-icon");
     const copyMessage = document.getElementById("copyMessage");
     if (successful) {
-      // console.log("内容已复制");
+      // 
 
       // // 显示对勾和复制消息
       // // 隐藏复制图标，显示已复制图标
@@ -1204,7 +1204,7 @@ copyButton.addEventListener("click", async function () {
         copyIcon.hidden = false;
       }, 2000); // 2秒后恢复到"复制"
     } else {
-      console.log("复制失败");
+      
     }
   } catch (err) {
     console.error("无法复制", err);
@@ -1227,7 +1227,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // 清除文本输入框的内容
 clearButton.addEventListener("click", function () {
   textInput.value = ""; // 清空输入框
-  console.log("输入框内容已清除"); // 可选：在控制台输出清除信息
+   // 可选：在控制台输出清除信息
 });
 
 const toggleSwitch = document.getElementById("toggle-translate");
@@ -1245,7 +1245,7 @@ toggleSwitch.addEventListener("change", () => {
   //   localStorage.setItem("toggleSwitchState", toggleSwitch.checked);
   // 保存切换开关的状态到 chrome.storage
   chrome.storage.local.set({ toggleSwitchState: toggleSwitch.checked }, () => {
-    console.log("切换开关状态已保存:", toggleSwitch.checked);
+    
   });
 
   // 发送消息到 content.js
@@ -1253,16 +1253,16 @@ toggleSwitch.addEventListener("change", () => {
 
   // 如果切换开关打开，处理输入框的点击事件
   if (toggleSwitch.checked) {
-    console.log("切换开关已打开");
+    
   } else {
     // 如果切换开关关闭，隐藏图标
-    console.log("切换开关已关闭");
+    
     //   iconContainer.style.display = "none"; // 隐藏图标容器
   }
 });
 
 function updateButtonVisibility(selectedText) {
-  console.log("hihihihi");
+  
   // const selectedText = window.getSelection().toString();
   const pasteButton = document.getElementById("paste-button");
   const copyButton = document.getElementById("copy-button");
@@ -1275,14 +1275,14 @@ function updateButtonVisibility(selectedText) {
     copyButton.style.display = "none";
     // soundButton.style.display = "none";
     clearButton.style.display = "none";
-    console.log("Showing paste button"); // 输出状态
+     // 输出状态
   } else {
     // 如果没有选择的文本，显示其他按钮
     pasteButton.style.display = "none";
     copyButton.style.display = "block";
     // soundButton.style.display = "block";
     clearButton.style.display = "block";
-    console.log("Showing copy, sound, and clear buttons"); // 输出状态
+     // 输出状态
   }
 }
 
@@ -1290,7 +1290,7 @@ function updateButtonVisibility(selectedText) {
 document
   .getElementById("google-login-button")
   .addEventListener("click", async function () {
-    console.log("click login button");
+    
     document.getElementById("login-overlay").classList.remove("hidden");
 
     chrome.runtime.sendMessage(
@@ -1303,7 +1303,7 @@ document
         } else {
           // this.isLoading = false;
           alert("Login failed. Please try again.");
-          console.log("heeeeeeeeeeee");
+          
           document.getElementById("login-overlay").classList.remove("hidden");
         }
       }
@@ -1319,7 +1319,7 @@ async function handleGoogleLogin(event) {
     // 直接重定向到 Google 登录页面
     // window.location.href = "http://localhost:3000/auth/google";
     window.location.href = serverUrl + "/auth/google";
-    console.log("触发了auth google");
+    
   } catch (error) {
     console.error("error occured while Google login:", error);
   } finally {
@@ -1329,10 +1329,10 @@ async function handleGoogleLogin(event) {
 }
 
 function handleAuthCallback() {
-  // console.log("触发了auth/google/callback");
+  // 
   const params = new URLSearchParams(window.location.search);
-  // console.log("window.location.search is: ", window.location.search);
-  // console.log("params is: ", params);
+  // 
+  // 
   const userDataString = params.get("user");
   const authCode = params.get("code");
 
@@ -1350,11 +1350,11 @@ function handleAuthCallback() {
     // alert("Google login successful!");
   } else if (authCode) {
     // 处理授权码，例如通过 API 请求用户信息
-    // console.log("Authorization code received:", authCode);
+    // 
     // 可以进一步调用后端来交换访问令牌和获取用户信息
   }
   // else {
-  //   // console.log("No relevant data in URL, not an OAuth callback.");
+  //   // 
   // }
 }
 
@@ -1364,12 +1364,12 @@ if (
   window.location.search.includes("code=") ||
   window.location.search.includes("user=")
 ) {
-  // console.log("触发callback中。。。。");
+  // 
   handleAuthCallback();
 }
 
 let isLoggedIn = false;
-console.log("isLoggedIn 的值：", isLoggedIn);
+
 let userName = "";
 let userAvatarUrl = "";
 let userEmail = "";
@@ -1378,12 +1378,12 @@ let userInfo = "";
 
 // content.js
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("000099999");
+  
 
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "notLogin") {
       document.getElementById("login-overlay").classList.remove("hidden");
-      console.log("notLogin action received");
+      
     }
   });
 });
@@ -1395,16 +1395,16 @@ function logoutClearInfo() {
 
 function storeUserInfo(userInfo) {
   chrome.storage.local.set({ user: userInfo }, function () {
-    console.log("用户信息存储成功");
+    
   });
   chrome.storage.local.get("user", function (result) {
-    console.log("result from storage is: ", result);
+    
   });
 }
 
 function storeLoginStatus(isLoggedIn) {
   chrome.storage.local.set({ isLoggedIn: isLoggedIn }, function () {
-    console.log("登录状态存储成功");
+    
   });
 }
 
@@ -1443,9 +1443,9 @@ async function getLoginStatus() {
   //     if (data.loggedIn) {
   //       // 用户已登录，更新 UI
   //       // updateUI(data.user);
-  //       console.log("data.loggedIn is: ", data.loggedIn);
-  //       console.log("data.user is: ", data.user);
-  //       console.log("login ok, overlay hidden");
+  //       
+  //       
+  //       
   //       document.getElementById("user-avatar").src = data.user.avatarUrl;
 
   //       document.getElementById("login-overlay").classList.add("hidden");
@@ -1453,7 +1453,7 @@ async function getLoginStatus() {
   //     } else {
   //       // 用户未登录，显示登录按钮等
   //       // showLoginUI();
-  //       console.log("login not ok, remove overlay hidden");
+  //       
   //       document.getElementById("login-overlay").classList.remove("hidden");
   //     }
   //   })
@@ -1468,13 +1468,13 @@ function getUserInfo() {
       console.error(chrome.runtime.lastError);
     } else {
       if (result.user) {
-        console.log("用户信息:", result.user);
+        
         // 更新UI
         document.getElementById("user-avatar").src = result.user.profileImage;
         // document.getElementById("username").textContent = result.user.name;
       } else {
         document.getElementById("login-overlay").classList.remove("hidden");
-        console.log("未找到用户信息");
+        
       }
     }
   });
@@ -1483,11 +1483,11 @@ function getUserInfo() {
 //监听登录成功，则更新UI
 chrome.runtime.onMessage.addListener((request) => {
   if (request.action === "updateUI") {
-    console.log("in created is: ", request.userData);
+    
     // 仅在用户数据存在时更新登录状态
     if (request.userData) {
       isLoggedIn = true;
-      // console.log("in created is....: ", request.userData.username);
+      // 
       userName = request.userData.username || request.userData.name || "";
       userAvatarUrl = request.userData.picture || "";
       // 设置头像的src属性
@@ -1505,7 +1505,7 @@ chrome.runtime.onMessage.addListener((request) => {
       // this.setUserSession(request.userData);
     } else {
       document.getElementById("login-overlay").classList.remove("hidden");
-      console.log("6666666");
+      
     }
     //     this.loadUserSession(); // 加载用户会话
     // this.loadPromptsData(); // 组件创建时加载数据
@@ -1513,7 +1513,7 @@ chrome.runtime.onMessage.addListener((request) => {
   }
 
   if (request.action === "notLogin") {
-    console.log("88888888");
+    
     document.getElementById("login-overlay").classList.remove("hidden");
   }
 });
@@ -1613,8 +1613,8 @@ async function detectAndUpdateLanguage(text) {
   const detectedLanguage = detectLanguageWithFranc(text);
 
   languageCode = iso639_3_to_1[detectedLanguage];
-  console.log("detectedLanguage is: ", detectedLanguage);
-  console.log("languageCode is: ", languageCode);
+  
+  
 
 
   let language1 = languageCode;
@@ -1632,10 +1632,10 @@ async function detectAndUpdateLanguage(text) {
 
   if (detectedLanguage == "und") {
     language1 = "auto"; // 如果未识别出语言，则设置为自动检测
-    console.log("未识别出语言，则设置为自动检测");
+    
   }
 
-  console.log("language1 is: ", language1);
+  
 
 
   // language = languagesData.find((lang) => lang.value === languageCode);
@@ -1643,7 +1643,7 @@ async function detectAndUpdateLanguage(text) {
   let language = languagesData.find((lang) => lang.value === language1);
 
 
-  console.log("language issss: ", language);
+  
 
 
 
@@ -1653,7 +1653,7 @@ async function detectAndUpdateLanguage(text) {
     language = languagesData.find((lang) => lang.value === "auto");; // 如果未识别出语言，则设置为自动检测
     console.log("language is auto")
   } else {
-    console.log("11111");
+    
     // 找到具有 data-value="auto" 的元素
     const autoElement = document.querySelector('li[data-value="auto"]');
 
@@ -1666,7 +1666,7 @@ async function detectAndUpdateLanguage(text) {
     }
   }
 
-  console.log("`${language.value}`: ", `${language.value}`);
+  
   // 找到具有 data-value="auto" 的元素
   // const selectedElement = document.querySelector('li[data-value=`${language.value}`]');
 
@@ -1679,7 +1679,7 @@ async function detectAndUpdateLanguage(text) {
     if (option.dataset.value === language.value) {
       // option.appendChild(checkmarkIcon);
       option.classList.add("selected");
-      console.log("99999999");
+      
     } else {
       // 否则移除对勾
       const checkmarkIcon = option.querySelector(".checkmark-icon");
@@ -1698,15 +1698,15 @@ async function detectAndUpdateLanguage(text) {
   );
   const targetSelectElement = document.getElementById("target-dropdown-button");
 
-  console.log("language.value: ", language.value);
+  
 
   const browserLang = navigator.language.split('-')[0];
-  console.log("browserLang: ", browserLang);
+  
   const targetAutoElement = document.querySelector('#target-dropdown-panel li[data-value="auto"]');
 
 
   if (language.value !== "en") {
-    console.log("不是英语");
+    
     targetLanguageOptions.forEach((option) => {
       if (option.dataset.value === "en") {
         // option.appendChild(checkmarkIcon);
@@ -1740,14 +1740,14 @@ async function detectAndUpdateLanguage(text) {
       }
     });
   } else { // 如果源语言为英语，则目标语言为浏览器默认语言
-    // console.log("navigator.language: ", navigator.language);
+    // 
     // 获取浏览器语言的前两个字符（语言代码部分）
 
 
     targetLanguageOptions.forEach((option) => {
       if (option.dataset.value === browserLang) {
         // option.appendChild(checkmarkIcon);
-        console.log("browserLang: ", browserLang);
+        
         option.classList.add("selected");
 
         // 找到对应的语言数据来显示正确的文本
@@ -1797,7 +1797,7 @@ async function detectAndUpdateLanguage(text) {
   // selectElement.appendChild(createDropdownIcon()); // 重新添加下拉箭头
 
   // const buttonElement = selectElement.querySelector(".select-button");
-  // console.log("buttonElement is: ", buttonElement);
+  // 
   selectElement.querySelector(".button-label").textContent = `${language.english} (${language.chinese})`;
   selectElement.appendChild(createDropdownIcon()); // 重新添加下拉箭头
 
@@ -1807,15 +1807,15 @@ async function detectAndUpdateLanguage(text) {
   targetSelectElement.appendChild(createDropdownIcon()); // 重新添加下拉箭头
 
   // 输出检测结果
-  console.log(`Detected language (ISO 639-3): ${detectedLanguage}`);
-  console.log(`Mapped to ISO 639-1: ${languageCode}`);
+  
+  
 }
 
 // 从按钮文本获取语言的value
 function getLanguageValueFromText(buttonText) {
   // 检查buttonText是否为空
   if (!buttonText) {
-    console.log("Warning: buttonText is undefined or empty");
+    
     return null;
   }
 
@@ -1828,7 +1828,7 @@ function getLanguageValueFromText(buttonText) {
   );
 
   if (!language) {
-    console.log(`Warning: No language found for text: ${cleanText}`);
+    
   }
 
   return language ? language.value : null;
@@ -1893,7 +1893,7 @@ function populateLanguageOptions(languagesData, container) {
   // 获取缓存的选择列表，如果有的话
   const cachedLanguages =
     JSON.parse(localStorage.getItem("cachedLanguages")) || [];
-  console.log(cachedLanguages);
+  
   cachedLanguages.slice(0, 10).forEach((cachedLanguage) => {
     if (cachedLanguage !== "auto") {
       const cachedLanguageData = languagesData.find(
@@ -2085,7 +2085,7 @@ function selectLanguage(value, text, container) {
   // document.getElementById("dropdown-panel").classList.add("hidden");
 
   const buttonElement = container.querySelector(".select-button");
-  console.log("buttonElement is: ", buttonElement);
+  
   buttonElement.querySelector(".button-label").textContent = text;
   // buttonElement.appendChild(createDropdownIcon());
   container.querySelector(".select-panel").classList.add("hidden");
@@ -2101,7 +2101,7 @@ function selectLanguage(value, text, container) {
         newCheckmarkIcon.classList.add("checkmark-icon");
         newCheckmarkIcon.textContent = " ✔";
         // option.appendChild(newCheckmarkIcon);
-        console.log("my option is: ", option);
+        
         option.classList.add("selected");
       }
     } else if (option.classList.contains("selected")) {
@@ -2120,7 +2120,7 @@ function selectLanguage(value, text, container) {
     JSON.stringify(cachedLanguages.slice(0, 10))
   ); // 只保留最近的10个选择
 
-  console.log(`Selected language: ${value}`);
+  
 }
 
 // 创建下拉箭头元素
@@ -2195,7 +2195,7 @@ document.querySelectorAll(".search-box").forEach((searchBox) => {
 
   // 定义选项的点击事件处理函数
   const optionClickHandler = () => {
-    console.log("option is clicked");
+    
     resetSearchBox(searchBox);
     resetAllOptions(searchBox.closest('.select-panel'));
   };
@@ -2213,7 +2213,7 @@ document.querySelectorAll(".search-box").forEach((searchBox) => {
       const visibleOptions = optionsContainer.querySelectorAll("li:not([style*='display: none'])");
       if (visibleOptions.length > 0) {
         visibleOptions[0].click();
-        console.log("visibleOptions: ", visibleOptions);
+        
         resetSearchBox(searchBox);
         resetAllOptions(selectPanel);
       }
@@ -2228,7 +2228,7 @@ document.querySelectorAll(".search-box").forEach((searchBox) => {
       const options = optionsContainer.querySelectorAll("li");
       options.forEach(option => {
         option.addEventListener('click', () => {
-          console.log("option is clicked");
+          
           resetSearchBox(searchBox);  // 添加这行：在点击时重置搜索框
           resetAllOptions(selectPanel);
         });
@@ -2243,7 +2243,7 @@ document.querySelectorAll(".search-box").forEach((searchBox) => {
 
 // 释放搜索框的搜索条件
 const resetSearchBox = (searchBox) => {
-  console.log("resetSearchBox is called");
+  
   if (!searchBox) return;
 
   // 清空搜索框
