@@ -10,7 +10,7 @@
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["https://*/*", "http://*/*"],
       "js": ["content.js", "franc/franc-browser-t1.js"]
     }
   ],
@@ -30,7 +30,7 @@
   "web_accessible_resources": [
     {
       "resources": ["popup.html","icons/icons8-translate-32.png", "transIcon.css", "login.html", "login.js", "franc/franc-browser.js", "languages.json", "icons/icons8-translate-16.png"],
-      "matches": ["<all_urls>"]
+      "matches": ["https://*/*", "http://*/*"]
     }
   ]
 }

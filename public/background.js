@@ -1,9 +1,10 @@
 // const serverUrl = "http://localhost:5000";
 const serverUrl = "https://transwise.onrender.com";
 
-
-chrome.action.onClicked.addListener((tab) => {
-  chrome.scripting.executeScript({
+// 当扩展图标被点击时注入内容脚本
+chrome.action.onClicked.addListener(async (tab) => {
+  // 然后执行打开弹窗的逻辑
+  await chrome.scripting.executeScript({
     target: { tabId: tab.id },
     function: openPopup,
   });
@@ -196,7 +197,3 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   }
 });
-
-
-
-
