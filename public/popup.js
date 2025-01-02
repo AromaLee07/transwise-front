@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const messageText = document.createElement('div');
         // messageText.textContent = '已经超过最大次数10次, 请次日再使用';
-        messageText.textContent = 'The maximum number of times has been exceeded by 10 times. Please try again the next day.';
+        messageText.textContent = 'Max 10 uses per day. Please try again tomorrow.';
 
         // 清空现有内容并添加新消息
         errorPopup.innerHTML = '';
